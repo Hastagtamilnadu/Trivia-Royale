@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TriviaRoyale.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0F0E0F</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/empty_splash_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.TriviaRoyale</item>
+    </style>
+
+    <style name="Theme.TriviaRoyale" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+        <item name="android:windowBackground">#FF0F0E0F</item>
+    </style>
+</resources>

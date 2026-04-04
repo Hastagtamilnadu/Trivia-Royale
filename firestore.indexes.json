@@ -1,0 +1,61 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "players",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "correctAnswers",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "elapsedMillis",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "players",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "totalCp",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "lastUpdatedAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "members",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "activeCounted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "activeUntil",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "clans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "battleJoinRecommended",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "activeMemberCount7d",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background circle -->
+    <path
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"
+        android:fillColor="#B6A0FF"/>
+    <!-- T letter for Trivia -->
+    <path
+        android:pathData="M38,35h32v6h-13v28h-6v-28h-13z"
+        android:fillColor="#0F0E0F"/>
+    <!-- Crown/Star accent -->
+    <path
+        android:pathData="M54,28l3,5l5,-2l-2,5l5,2l-5,2l2,5l-5,-2l-3,5l-3,-5l-5,2l2,-5l-5,-2l5,-2l-2,-5l5,2z"
+        android:fillColor="#FFD709"
+        android:fillAlpha="0.0"/>
+</vector>

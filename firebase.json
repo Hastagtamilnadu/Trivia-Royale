@@ -1,0 +1,26 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "auth": {
+    "providers": {
+      "anonymous": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Trivia Royale",
+        "supportEmail": "YOUR_SUPPORT_EMAIL"
+      }
+    }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

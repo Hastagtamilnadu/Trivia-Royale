@@ -1,0 +1,148 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwnUser(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function validProfileDoc(userId) {
+      let requiredFields = ['uid', 'displayName', 'updatedAt'];
+      let allowedFields = [
+        'uid',
+        'email',
+        'username',
+        'displayName',
+        'photoUrl',
+        'updatedAt',
+        'clanId',
+        'clanRole',
+        'clanTag',
+        'clanJoinedAt',
+        'contributionCooldownEndsAt',
+        'contributionStreak',
+        'lifetimeContribution',
+        'warParticipationCount',
+        'warWinCount',
+        'mvpCount',
+        'warChestClaims',
+        'lastSeasonFinish',
+        'seasonBadges',
+        'equippedNameplateId',
+        'equippedFrameId',
+        'equippedTitleId',
+        'equippedStreakEffectId',
+        'equippedResultCardId'
+      ];
+      return request.resource.data.keys().hasAll(requiredFields) &&
+        request.resource.data.keys().hasOnly(allowedFields) &&
+        request.resource.data.uid is string &&
+        request.resource.data.uid == userId &&
+        request.resource.data.displayName is string &&
+        request.resource.data.displayName.size() > 0 &&
+        request.resource.data.displayName.size() <= 12 &&
+        (request.resource.data.updatedAt is int || request.resource.data.updatedAt is timestamp);
+    }
+
+    match /users/{userId} {
+      allow read: if isOwnUser(userId);
+      allow create, update: if isOwnUser(userId) && validProfileDoc(userId);
+      allow delete: if false;
+    }
+
+    match /wallets/{userId} {
+      allow read: if isOwnUser(userId);
+      allow create, update, delete: if false;
+    }
+
+    match /ownedCosmetics/{userId} {
+      allow read: if isOwnUser(userId);
+      allow create, update, delete: if false;
+    }
+
+    match /abilities/{userId} {
+      allow read: if isOwnUser(userId);
+      allow create, update, delete: if false;
+    }
+
+    match /deviceRegistrations/{deviceId} {
+      allow read, write: if false;
+    }
+
+    match /billingTokens/{tokenId} {
+      allow read, write: if false;
+    }
+
+    match /gameBackups/{userId} {
+      allow read, write: if false;
+    }
+
+    match /dailyChallengeSets/{document=**} {
+      allow read, write: if false;
+    }
+
+    match /dailyChallengeSessions/{sessionId} {
+      allow read, write: if false;
+    }
+
+    match /verifiedDailyEntries/{dateKey}/players/{userId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /dailyPlayerStats/{userId} {
+      allow read, write: if false;
+    }
+
+    match /clanMeta/{docId} {
+      allow read, write: if false;
+    }
+
+    match /clans/{clanId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /members/{userId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    match /clanWars/{warId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /participants/{userId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    match /contributionSeasons/{seasonId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /players/{userId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    match /public/{document=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /rateLimits/{userId} {
+      allow read, write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

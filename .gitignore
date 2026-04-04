@@ -1,0 +1,66 @@
+# ── Android ──────────────────────────────────
+*.iml
+.gradle/
+.gradle-user-home/
+.android-user-home/
+android/.gradle/
+android/.gradle-user-home/
+android/.android-user-home/
+android/build/
+android/app/build/
+android/local.properties
+android/captures/
+android/.externalNativeBuild/
+android/.cxx/
+
+# ── IDE ──────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Firebase ─────────────────────────────────
+.firebase/
+firebase-debug.log
+functions/firebase-debug.log
+ui-debug.log
+
+# ── Node ─────────────────────────────────────
+node_modules/
+functions/node_modules/
+functions/lib/*.map
+
+# ── Build artifacts ──────────────────────────
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.jar
+*.aar
+build/
+
+# ── OS files ─────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets (never commit) ───────────────────
+google-services.json
+*.keystore
+*.jks
+*.p12
+
+# ── Misc dev artifacts ──────────────────────
+.vite/
+.codex/
+.agents/
+*.db
+*.log
+google_ads_mcp_doc.html
+createclan_logs_json.txt
+log*.txt
+device-check.png
+device-screen.png
+trivia-ui.xml
